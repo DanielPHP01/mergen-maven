@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mergen SDK — Maven repository</title>
+<style>
+  :root {
+    --bg: #fbfbfa; --fg: #1a1a18; --muted: #6b6b66; --line: #e3e3df;
+    --card: #ffffff; --accent: #b4531f; --code-bg: #f4f4f1;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17171a; --fg: #e9e9e6; --muted: #9a9a94; --line: #2e2e33;
+      --card: #1f1f23; --accent: #e0854f; --code-bg: #26262b;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 48px 20px 80px; background: var(--bg); color: var(--fg);
+    font: 15px/1.65 ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 26px; letter-spacing: -.01em; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 36px; }
+  h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .08em;
+       color: var(--muted); margin: 36px 0 12px; font-weight: 600; }
+  pre { background: var(--code-bg); border: 1px solid var(--line); border-radius: 10px;
+        padding: 14px 16px; overflow-x: auto; margin: 0 0 14px;
+        font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  p code { background: var(--code-bg); padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; font-size: 13px; }
+  .note { background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--accent);
+          border-radius: 8px; padding: 13px 16px; color: var(--muted); font-size: 14px; }
+  a { color: var(--accent); }
+  footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--line);
+           color: var(--muted); font-size: 13px; }
+</style>
+<main>
+  <h1>Mergen SDK — Maven repository</h1>
+  <p class="sub">Android SDK для сканирования и верификации ID-карт КР. Аутентификация не требуется.</p>
+
+  <h2>Подключение</h2>
+  <p><code>settings.gradle.kts</code></p>
+<pre><code>dependencyResolutionManagement {
+    repositories {
+        maven {
+            url = uri("https://danielphp01.github.io/mergen-maven/")
+            content { includeGroup("com.mergen") }
+        }
+    }
+}</code></pre>
+  <p><code>app/build.gradle</code></p>
+<pre><code>implementation 'com.mergen:mergen-sdk:2.6.1'</code></pre>
+  <p class="note">
+    <code>content { includeGroup("com.mergen") }</code> не обязателен, но избавляет Gradle
+    от лишних запросов к этому репозиторию за чужими артефактами.
+  </p>
+
+  <h2>Версии</h2>
+  <table>
+    <tr><th>Версия</th><th>Дата</th><th>Что нового</th></tr>
+    <tr>
+      <td><code>2.6.1</code></td>
+      <td>2026-08-28</td>
+      <td>frontOcclusion / backOcclusion в VerifyResult — причина отказа галерейного фото (палец, тень)</td>
+    </tr>
+  </table>
+
+  <h2>Зеркало</h2>
+  <p>
+    Те же артефакты публикуются в GitHub Packages
+    (<code>maven.pkg.github.com/DanielPHP01/MergenSDK-Android</code>), но тот реестр требует
+    classic PAT даже для публичных пакетов. Этот репозиторий существует, чтобы интеграторам
+    не нужны были токены.
+  </p>
+
+  <footer>
+    Исходники репозитория: <a href="https://github.com/DanielPHP01/mergen-maven">github.com/DanielPHP01/mergen-maven</a>
+  </footer>
+</main>
+</html>
