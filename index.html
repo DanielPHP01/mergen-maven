@@ -53,7 +53,7 @@
     }
 }</code></pre>
   <p><code>app/build.gradle</code></p>
-<pre><code>implementation 'com.mergen:mergen-sdk:2.7.0'</code></pre>
+<pre><code>implementation 'com.mergen:mergen-sdk:2.7.1'</code></pre>
   <p class="note">
     <code>content { includeGroup("com.mergen") }</code> не обязателен, но избавляет Gradle
     от лишних запросов к этому репозиторию за чужими артефактами.
@@ -62,6 +62,11 @@
   <h2>Версии</h2>
   <table>
     <tr><th>Версия</th><th>Дата</th><th>Что нового</th></tr>
+    <tr>
+      <td><code>2.7.1</code></td>
+      <td>2026-09-09</td>
+      <td>Hotfix для 2.7.0: устранён SIGBUS-крэш на armeabi-v7a (выравнивание буфера модели для ONNX Runtime). Публичный API не менялся.</td>
+    </tr>
     <tr>
       <td><code>2.7.0</code></td>
       <td>2026-09-09</td>
